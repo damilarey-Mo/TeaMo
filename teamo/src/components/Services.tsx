@@ -1,45 +1,38 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { 
-  CodeBracketIcon, 
-  ShieldCheckIcon, 
-  ComputerDesktopIcon,
-  ShoppingCartIcon,
-  WrenchScrewdriverIcon,
-  ServerIcon
-} from '@heroicons/react/24/outline';
+import Image from 'next/image';
 
 const services = [
   {
     title: 'Web Development',
     description: 'Custom websites and web applications built with modern technologies and best practices.',
-    icon: CodeBracketIcon,
+    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80',
   },
   {
     title: 'Web Management & SEO',
     description: 'Comprehensive website management, optimization, and search engine visibility enhancement.',
-    icon: ShieldCheckIcon,
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
   },
   {
     title: 'Hosting & Security',
     description: 'Reliable hosting solutions and robust security measures to protect your digital assets.',
-    icon: ServerIcon,
+    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
   },
   {
     title: 'IT & Tech Support',
     description: 'Professional technical support and troubleshooting for all your IT needs.',
-    icon: WrenchScrewdriverIcon,
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
   },
   {
     title: 'Workstation Setup',
     description: 'Professional workstation design and setup for optimal productivity.',
-    icon: ComputerDesktopIcon,
+    image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
   },
   {
     title: 'Gadget Sales',
     description: 'Quality gadgets and tech equipment procurement services.',
-    icon: ShoppingCartIcon,
+    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1999&q=80',
   },
 ];
 
@@ -87,13 +80,21 @@ export default function Services() {
             <motion.div
               key={index}
               variants={item}
-              className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden"
             >
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <service.icon className="w-6 h-6 text-primary" />
+              <div className="relative h-48">
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               </div>
-              <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-              <p className="text-gray-600">{service.description}</p>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+                <p className="text-gray-600">{service.description}</p>
+              </div>
             </motion.div>
           ))}
         </motion.div>

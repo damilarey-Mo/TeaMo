@@ -1,33 +1,28 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { 
-  BoltIcon, 
-  UserGroupIcon, 
-  ClockIcon,
-  CurrencyDollarIcon
-} from '@heroicons/react/24/outline';
+import Image from 'next/image';
 
 const values = [
   {
     title: 'Speed',
     description: 'Quick response times and efficient solutions.',
-    icon: BoltIcon,
+    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
   },
   {
     title: 'Trust',
     description: 'Building long-term relationships based on reliability.',
-    icon: UserGroupIcon,
+    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80',
   },
   {
     title: 'Expertise',
     description: 'Years of experience in tech solutions.',
-    icon: ClockIcon,
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
   },
   {
     title: 'Affordability',
     description: 'Competitive pricing without compromising quality.',
-    icon: CurrencyDollarIcon,
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2022&q=80',
   },
 ];
 
@@ -70,13 +65,21 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-gray-50 p-6 rounded-xl"
+                className="bg-white rounded-xl shadow-sm overflow-hidden"
               >
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <value.icon className="w-6 h-6 text-primary" />
+                <div className="relative h-32">
+                  <Image
+                    src={value.image}
+                    alt={value.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
-                <h3 className="text-xl font-bold mb-2">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
+                <div className="p-4">
+                  <h3 className="text-lg font-bold mb-1">{value.title}</h3>
+                  <p className="text-gray-600 text-sm">{value.description}</p>
+                </div>
               </motion.div>
             ))}
           </motion.div>

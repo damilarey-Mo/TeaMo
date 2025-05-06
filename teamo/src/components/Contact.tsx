@@ -1,35 +1,30 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { 
-  PhoneIcon, 
-  EnvelopeIcon, 
-  MapPinIcon,
-  ChatBubbleLeftRightIcon
-} from '@heroicons/react/24/outline';
+import Image from 'next/image';
 
 const contactInfo = [
   {
     title: 'Phone',
     value: '+234 123 456 7890',
-    icon: PhoneIcon,
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     href: 'tel:+2341234567890',
   },
   {
     title: 'Email',
     value: 'info@teamo.ng',
-    icon: EnvelopeIcon,
+    image: 'https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     href: 'mailto:info@teamo.ng',
   },
   {
     title: 'Location',
     value: 'Lagos, Nigeria',
-    icon: MapPinIcon,
+    image: 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
   },
   {
     title: 'WhatsApp',
     value: 'Chat with us',
-    icon: ChatBubbleLeftRightIcon,
+    image: 'https://images.unsplash.com/photo-1614680376408-81e91ffe3db7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80',
     href: 'https://wa.me/2341234567890',
   },
 ];
@@ -66,10 +61,15 @@ export default function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-start space-x-4"
+                className="flex items-start space-x-4 bg-white p-4 rounded-xl shadow-sm"
               >
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <info.icon className="w-6 h-6 text-primary" />
+                <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                  <Image
+                    src={info.image}
+                    alt={info.title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold mb-1">{info.title}</h3>

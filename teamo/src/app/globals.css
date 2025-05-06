@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --primary: #003366;
-  --secondary: #00C8B3;
-  --accent: #FFFFFF;
+  --primary: #1a5f7a;  /* Deep Blue */
+  --secondary: #2c5530; /* Dark Green */
+  --accent: #FFFFFF;   /* White */
 }
 
 @layer base {
@@ -35,6 +35,10 @@
   
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .gradient-bg {
+    @apply bg-gradient-to-br from-secondary to-primary;
   }
 }
 
